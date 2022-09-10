@@ -1,36 +1,36 @@
 package org.example;
 
 public class Resultados {
-    private float triglicerides;
-    private float colesterolTotal;
-    private float colesterolHDL;
-    private float colesterolLDL;
-    private float colesterolVLDL;
-    private float glicose;
+    private int triglicerides;
+    private int colesterolTotal;
+    private int colesterolHDL;
+    private int colesterolLDL;
+    private int colesterolVLDL;
+    private int glicose;
 
-    private final float LIMITE_DESEJAVEL_TRIGLICERIDES = 150f;
-    private final float LIMITE_LIMITROFE_TRIGLICERIDES = 200f;
-    private final float LIMITE_ALTO_TRIGLICERIDES = 500f;
+    private final int LIMITE_DESEJAVEL_TRIGLICERIDES = 150;
+    private final int LIMITE_LIMITROFE_TRIGLICERIDES = 200;
+    private final int LIMITE_ALTO_TRIGLICERIDES = 500;
 
-    private final float LIMITE_DESEJAVEL_COLESTEROL_TOTAL = 200f;
-    private final float LIMITE_LIMITROFE_COLESTEROL_TOTAL = 240f;
+    private final int LIMITE_DESEJAVEL_COLESTEROL_TOTAL = 200;
+    private final int LIMITE_LIMITROFE_COLESTEROL_TOTAL = 240;
 
-    private final float LIMITE_BAIXO_COLESTEROL_HDL = 40f;
-    private final float LIMITE_NORMAL_COLESTEROL_HDL = 60f;
+    private final int LIMITE_BAIXO_COLESTEROL_HDL = 40;
+    private final int LIMITE_NORMAL_COLESTEROL_HDL = 60;
 
-    private final float LIMITE_OTIMO_COLESTEROL_LDL = 100f;
-    private final float LIMITE_DESEJAVEL_COLESTEROL_LDL = 130f;
-    private final float LIMITE_LIMITROFE_COLESTEROL_LDL = 160f;
-    private final float LIMITE_ALTO_COLESTEROL_LDL = 190f;
+    private final int LIMITE_OTIMO_COLESTEROL_LDL = 100;
+    private final int LIMITE_DESEJAVEL_COLESTEROL_LDL = 130;
+    private final int LIMITE_LIMITROFE_COLESTEROL_LDL = 160;
+    private final int LIMITE_ALTO_COLESTEROL_LDL = 190;
 
-    private final float LIMITE_DESEJAVEL_COLESTEROL_VLDL = 30f;
-    private final float LIMITE_LIMITROFE_COLESTEROL_VLDL = 40f;
+    private final int LIMITE_DESEJAVEL_COLESTEROL_VLDL = 30;
+    private final int LIMITE_LIMITROFE_COLESTEROL_VLDL = 40;
 
-    private final float LIMITE_HIPOCLICEMIA_GLICOSE = 60f;
-    private final float LIMITE_DESEJAVEL_GLICOSE = 100f;
-    private final float LIMITE_GLICEMIA_JEJUM_INAPROPRIADA_GLICOSE = 125f;
+    private final int LIMITE_HIPOCLICEMIA_GLICOSE = 60;
+    private final int LIMITE_DESEJAVEL_GLICOSE = 100;
+    private final int LIMITE_GLICEMIA_JEJUM_INAPROPRIADA_GLICOSE = 125;
 
-    public Resultados(float triglicerides, float colesterolTotal, float colesterolHDL, float colesterolLDL, float colesterolVLDL, float glicose){
+    public Resultados(int triglicerides, int colesterolTotal, int colesterolHDL, int colesterolLDL, int colesterolVLDL, int glicose){
         this.triglicerides = triglicerides;
         this.colesterolTotal = colesterolTotal;
         this.colesterolHDL = colesterolHDL;
@@ -39,7 +39,7 @@ public class Resultados {
         this.glicose = glicose;
     }
 
-    public void verificaValorZerado(float valor){
+    public void verificaValorZerado(int valor){
         if(valor<=0){
             throw new IllegalArgumentException("Valor informado abaixo ou igual a zero");
         }
@@ -66,7 +66,7 @@ public class Resultados {
         this.verificaValorZerado(this.colesterolHDL);
 
         if (this.colesterolHDL < LIMITE_BAIXO_COLESTEROL_HDL){ return "Nível baixo"; }
-        else if (this.colesterolHDL < LIMITE_NORMAL_COLESTEROL_HDL) { return "Nível normal"; }
+        else if (this.colesterolHDL <= LIMITE_NORMAL_COLESTEROL_HDL) { return "Nível normal"; }
         else { return "Nível desejado"; }
     }
 
@@ -84,7 +84,7 @@ public class Resultados {
         this.verificaValorZerado(this.colesterolVLDL);
 
         if (this.colesterolVLDL < LIMITE_DESEJAVEL_COLESTEROL_VLDL){ return "Nível desejável"; }
-        else if (this.colesterolVLDL < LIMITE_LIMITROFE_COLESTEROL_VLDL) { return "Nível limítrofe"; }
+        else if (this.colesterolVLDL <= LIMITE_LIMITROFE_COLESTEROL_VLDL) { return "Nível limítrofe"; }
         else { return "Nível elevado"; }
     }
 
@@ -93,7 +93,7 @@ public class Resultados {
 
         if (this.glicose < LIMITE_HIPOCLICEMIA_GLICOSE){ return "Hipoglicemia"; }
         else if (this.glicose < LIMITE_DESEJAVEL_GLICOSE) { return "Desejável"; }
-        else if (this.glicose < LIMITE_GLICEMIA_JEJUM_INAPROPRIADA_GLICOSE) { return "Glicemia de jejum inapropriada"; }
+        else if (this.glicose <= LIMITE_GLICEMIA_JEJUM_INAPROPRIADA_GLICOSE) { return "Glicemia de jejum inapropriada"; }
         else { return "Diabetes"; }
     }
 }
